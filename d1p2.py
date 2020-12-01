@@ -209,10 +209,14 @@ i = 0
 found = False
 
 while i < n_entries and not found:
-    difference = 2020 - entries[i]
-    for j in range(i, n_entries):
-        if entries[j] == difference:
-            print(entries[i] * entries[j])
-            found = True
-    else:
-        i += 1
+    j = i + 1
+    while j < n_entries and not found:
+        total = entries[i] + entries[j]
+        if total < 2020:
+            difference = 2020 - total
+            for k in range(j, n_entries):
+                if entries[k] == difference:
+                    print(entries[i] * entries[j] * entries[k])
+                    found = True
+        j += 1
+    i += 1
